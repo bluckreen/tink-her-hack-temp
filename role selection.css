@@ -1,0 +1,73 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to right, #1E3A8A, #10B981);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card Container */
+.role-card {
+    background-color: #ffffff;
+    width: 400px;
+    padding: 50px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Heading */
+.role-card h2 {
+    color: #1E3A8A;
+    margin-bottom: 15px;
+}
+
+/* Subtitle */
+.role-card .subtitle {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Role Buttons */
+.role-btn {
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s;
+}
+
+/* Admin Button */
+.admin-btn {
+    background-color: #1E3A8A;
+}
+
+.admin-btn:hover {
+    background-color: #10B981;
+}
+
+/* Student Button */
+.student-btn {
+    background-color: #10B981;
+}
+
+.student-btn:hover {
+    background-color: #1E3A8A;
+}
