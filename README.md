@@ -2,27 +2,27 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# SPACE BOOKER 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: CODEX
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: LUBABA KT - EMEA College of arts and science
+- Member 2: SALIHA JIBIN  - EMEA College of arts and science
 
 ### Hosted Project Link
 [mention your project hosted link here]
 
 ### Project Description
-[2-3 lines about what your project does]
+Space Booker is a web-based application that lets students and staff check and book college spaces like auditoriums, AV rooms, seminar halls, and labs. It shows real-time availability of resources like seating, fans, lights, AC, and computers. Admins manage bookings and update resources, while students can easily view and request venues. The system ensures efficient space usage, avoids conflicts, and simplifies event planning on campus.
 
 ### The Problem statement
-[What problem are you solving?]
+SPACE BOOKER solves the problem of manual, confusing, and conflicting space bookings in a college or campus by providing a real-time online system where students can book halls or labs, admins can approve/reject requests, and all availability and issues are tracked efficiently.
 
 ### The Solution
-[How are you solving it?]
+SPACE BOOKER streamlines campus space bookings by allowing real-time student reservations, admin approvals, and automatic tracking of availability and issues.
 
 ---
 
@@ -31,25 +31,22 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: CSS,HTML,Java script
+- Frameworks used: Firebase
+- Libraries used: Firebase SDK
+- Tools used: VS Code,Git
 
-**For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
+
 
 ---
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: Check Availability: View free halls, labs, and rooms in real-time.
+- Feature 2: Resource Status: See lights, AC, fans, seats, and computers availability.
+- Feature 3: Book Easily: Reserve venues for specific dates and times.
+- Feature 4: Admin Control: Manage bookings and update resources efficiently.
 
 ---
 
@@ -67,13 +64,7 @@ List the key features of your project:
 [Run commands - e.g., npm start, python app.py]
 ```
 
-### For Hardware:
 
-#### Components Required
-[List all components needed with specifications]
-
-#### Circuit Setup
-[Explain how to set up the circuit]
 
 ---
 
