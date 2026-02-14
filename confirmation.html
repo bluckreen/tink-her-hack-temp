@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Booking Confirmation</title>
+  <link rel="stylesheet" href="../confirmation.css">
+</head>
+<body>
+  <div class="booking-container">
+    <h2>Booking Requested!</h2>
+    <p id="booking-details">Loading booking details...</p>
+    <button id="back-button">Back to Spaces</button>
+  </div>
+
+  <script type="module">
+    import { db } from "./firebase.js";
+    import { doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    // Get query params from URL
+    const params = new URLSearchParams(window.location.search);
+    const hallName = params.get("hall");
+    const date = params.get("date");
+    const time = params.get("time");
+
+    // Show confirmation message
+    const details = document.getElementById("booking-details");
+    if(date && time) {
+        details.textContent = `Your booking for ${hallName} on ${date} at ${time} has been requested.`;
+    } else {
+        details.textContent = "Booking details not found.";
+    }
+
+    // Update Firestore to mark hall as booked
+    async function bookHall() {
+      if(!hallName) return;
+      try {
+        const hallRef = doc(db, "venue", hallName);
+        await updateDoc(hallRef, { status: "Booked" });
+        console.log(`${hallName} status updated to Booked`);
+      } catch (error) {
+        console.error("Error updating hall status: ", error);
+      }
+    }
+
+    bookHall();
+
+    // Back button
+    document.getElementById("back-button").addEventListener("click", () => {
+        window.location.href = "spaces.html";
+    });
+  </script>
+</body>
+</html>

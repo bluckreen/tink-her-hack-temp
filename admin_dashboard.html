@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - SPACE BOOKER</title>
+    <link rel="stylesheet" href="../admin_dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome, Admin</h1>
+
+        <section class="pending-bookings">
+            <h2>Pending Bookings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Hall / Lab</th>
+                        <th>Date & Time</th>
+                        <th>User</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bookings-body">
+                    <!-- Booking rows will be inserted dynamically -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script type="module">
+        import { db } from "./firebase.js";
+        import { collection, getDocs, doc, updateDoc, query, where } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+        const bookingsBody = document.getElementById("bookings-body");
+
+        // Fetch pending bookings
+        async function loadBookings() {
+            try {
+                const q = query(collection(db, "bookings"), where("status", "==", "requested"));
+                const querySnapshot = await getDocs(q);
+
+                bookingsBody.innerHTML = ""; // clear existing rows
+
+                querySnapshot.forEach(docSnap => {
+                    const booking = docSnap.data();
+                    const tr = document.createElement("tr");
+
+                    tr.innerHTML = `
+                        <td>${docSnap.id}</td>
+                        <td>${booking.hallName || "N/A"}</td>
+                        <td>${booking.date} ${booking.time}</td>
+                        <td>${booking.userName || "Anonymous"}</td>
+                        <td>
+                            <button class="accept">Accept</button>
+                            <button class="reject">Reject</button>
+                        </td>
+                    `;
+
+                    // Handle buttons
+                    tr.querySelector(".accept").addEventListener("click", () => handleBooking(docSnap.id, "accepted"));
+                    tr.querySelector(".reject").addEventListener("click", () => handleBooking(docSnap.id, "rejected"));
+
+                    bookingsBody.appendChild(tr);
+                });
+
+            } catch (err) {
+                console.error("Error fetching bookings:", err);
+            }
+        }
+
+        // Accept or reject booking
+        async function handleBooking(bookingId, status) {
+            try {
+                const bookingRef = doc(db, "bookings", bookingId);
+                await updateDoc(bookingRef, { status: status });
+                alert(`Booking ${bookingId} has been ${status}.`);
+                loadBookings(); // refresh table
+            } catch (err) {
+                console.error("Error updating booking:", err);
+            }
+        }
+
+        loadBookings();
+    </script>
+</body>
+</html>

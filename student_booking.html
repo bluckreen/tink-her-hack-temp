@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Slot - SPACE BOOKER</title>
+    <link rel="stylesheet" href="student_booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="booking-container">
+        <h2>Book a Slot</h2>
+        <form id="booking-form">
+            <!-- Date Picker -->
+            <label for="booking-date">Select Date:</label>
+            <input type="date" id="booking-date" name="booking-date" required>
+
+            <!-- Time Picker -->
+            <label for="booking-time">Select Time:</label>
+            <input type="time" id="booking-time" name="booking-time" required>
+
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <script type="module">
+      import { db } from "./firebase.js";
+      import { collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+      const form = document.getElementById("booking-form");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // prevent normal form submit
+
+        // Get values
+        const date = document.getElementById("booking-date").value;
+        const time = document.getElementById("booking-time").value;
+
+        try {
+          // Save to Firestore
+          await addDoc(collection(db, "bookings"), {
+            date: date,
+            time: time,
+            status: "requested",
+            createdAt: Timestamp.now()
+          });
+
+          // Redirect to confirmation page with query params
+          const params = new URLSearchParams({ date, time });
+          window.location.href = `confirmation.html?${params.toString()}`;
+
+        } catch (err) {
+          console.error("Error saving booking:", err);
+          alert("There was an error submitting your booking. Try again.");
+        }
+      });
+    </script>
+</body>
+</html>
+

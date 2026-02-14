@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Spaces - SPACE BOOKER</title>
+    <link rel="stylesheet" href="spaces.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="page-title">Available Spaces</h1>
+    <div id="hall-list" class="space-grid">
+        <!-- Hall cards will be inserted here dynamically -->
+    </div>
+</div>
+
+<script type="module">
+  import { db } from "./firebase.js";
+  import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+  const hallList = document.getElementById("hall-list");
+
+  async function loadHalls() {
+    try {
+      const querySnapshot = await getDocs(collection(db, "venue"));
+      console.log("Number of halls:", querySnapshot.size);
+
+      querySnapshot.forEach(doc => {
+        const hall = doc.data();
+        console.log(hall);
+
+        // Create card
+        const a = document.createElement("a");
+        a.href = hall.link || "#";
+        a.className = "space-card";
+
+        const h3 = document.createElement("h3");
+        h3.textContent = hall.name;
+
+        const span = document.createElement("span");
+        span.className = "status " + (hall.status.toLowerCase() === "available" ? "available" : "booked");
+        span.textContent = hall.status.toLowerCase() === "available" ? "🟢 Available" : "🔴 Booked";
+
+        a.appendChild(h3);
+        a.appendChild(span);
+
+        hallList.appendChild(a);
+      });
+
+    } catch (error) {
+      console.error("Error fetching halls: ", error);
+    }
+  }
+
+  loadHalls();
+</script>
+
+</body>
+</html>
