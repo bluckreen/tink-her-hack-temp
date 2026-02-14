@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <link rel="stylesheet" href="logout.css">
+</head>
+<body>
+    <div class="message-box">
+        <h2>You have been logged out!</h2>
+        
+    </div>
+
+    <script>
+        // Clear stored user data (localStorage/sessionStorage)
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
+        sessionStorage.removeItem('email');
+        sessionStorage.removeItem('password');
+
+    
+    </script>
+</body>
+</html>
