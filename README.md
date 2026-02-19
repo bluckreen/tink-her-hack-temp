@@ -55,29 +55,23 @@ List the key features of your project:
 
 ### For Software:
 
-#### Screenshots (Add at least 3)
 
 
 
 
 
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+
 
 <img width="1845" height="879" alt="Screenshot 2026-02-14 110523" src="https://github.com/user-attachments/assets/2fb4c5c2-b39b-4177-9b7d-85bf18adc89a" />
 Home page
 
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
 <img width="1894" height="891" alt="image" src="https://github.com/user-attachments/assets/b0455c31-efb2-406e-8c30-ad34d8998f5d" />
 Space details
 
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+
 
 <img width="1599" height="863" alt="Screenshot 2026-02-19 154007" src="https://github.com/user-attachments/assets/766c1eb6-9224-4b74-9c48-6e158f0b2f0f" />
 Admin page
